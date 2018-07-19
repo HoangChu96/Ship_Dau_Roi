@@ -3,6 +3,9 @@ import {
   View, StyleSheet,  Dimensions, Text
 } from 'react-native';
 import Header from '../component/Header';
+import TaoDonHang from './TaoDonHang';
+import Address from './Address';
+import GooglePlacesAutocomplete from './GooglePlacesAutocomplete';
 
 const { width } = Dimensions.get('window');
 
@@ -19,10 +22,13 @@ class App extends Component{
   }
 
   render(){
+    const {navigation} = this.props;
     return(
         <View style={{flex:1}} >
             <Header onOpen={this.openMenu.bind(this)}/>
-            <Text>Hello App</Text>
+            {/* <GooglePlacesAutocomplete /> */}
+            {/* <Address /> */}
+            <TaoDonHang navigation={navigation} />
         </View>
     );
   }
