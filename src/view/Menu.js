@@ -14,6 +14,7 @@ class Menu extends Component {
   }
 
   render() {
+    const {navigation} = this.props;
     const {container, wrapper,txtList, txtName, wrapLeft, wapperContent} = styles;
     return (
       <View style={container} >
@@ -26,48 +27,48 @@ class Menu extends Component {
         </View>
 
         <View style={wrapper} >
-          <TouchableOpacity style={wrapLeft} >
+          <TouchableOpacity style={wrapLeft} onPress={() => navigation.dispatch({ type: 'Comment' })}  >
             <Icon name='star' style={{ color: 'red' }} />
             <Text>Chưa có nhận xét nào</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.dispatch({ type: 'Wallet' })}>
             <Icon name='pie' style={{ color: 'orange' }} />
             <Text>0 Xu</Text>
           </TouchableOpacity>
         </View> 
 
         <ScrollView>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'SearchOrder' })}>
             <Icon name='paper' style={{ color: 'gray' }} />
             <Text style={txtList} >Tìm Đơn Hàng</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'ReceiveOrder' })} >
             <Icon name='cart' style={{ color: 'gray' }} />
             <Text style={txtList}>Đơn Đã Nhận</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'Notify' })}>
             <Icon name='notifications' style={{ color: 'gray' }} />
             <Text style={txtList}>Thông Báo</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'Wallet' })}>
             <Icon type="FontAwesome" name='bitcoin' style={{ color: 'gray' }} />
             <Text style={txtList}>Tài Khoản</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'Profile' })}>
             <Icon name='person' style={{ color: 'gray' }} />
             <Text style={txtList}>Trang Cá Nhân</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'Manual' })}>
             <Icon type="Octicons" name='issue-opened' style={{ color: 'gray' }} />
             <Text style={txtList}>Hướng Dẫn Sử Dụng</Text>
             <Text />
           </TouchableOpacity>
-          <TouchableOpacity style={wapperContent} >
+          <TouchableOpacity style={wapperContent} onPress={() => navigation.dispatch({ type: 'Setting' })}>
             <Icon name='settings' style={{ color: 'gray' }} />
             <Text style={txtList}>Cài Đặt</Text>
             <Text />

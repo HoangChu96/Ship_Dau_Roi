@@ -1,40 +1,18 @@
-import {
-  createStore, applyMiddleware, combineReducers,
-} from 'redux';
-import {
-  reduxifyNavigator, createReactNavigationReduxMiddleware, createNavigationReducer,
-} from 'react-navigation-redux-helpers';
-import { Provider, connect } from 'react-redux';
 import React from 'react';
-import AppNavigator from './src/redux/navigate';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
-const navReducer = createNavigationReducer(AppNavigator);
-const appReducer = combineReducers({
-  nav: navReducer,
-});
+import AppReducer from './src/redux/reducer';
+import { AppNavigator, middleware } from './src/redux/AppNavigator';
 
-// Note: createReactNavigationReduxMiddleware must be run before reduxifyNavigator
-const middleware = createReactNavigationReduxMiddleware(
-  "app",
-  state => state.nav,
-);
 
-const AppNav = reduxifyNavigator(AppNavigator, "app");
-const mapStateToProps = (state) => ({
-  state: state.nav,
-});
-const AppWithNavigationState = connect(mapStateToProps)(AppNav);
-
-const store = createStore(
-  appReducer,
-  applyMiddleware(middleware),
-);
+const store = createStore(AppReducer, applyMiddleware(middleware));
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <AppWithNavigationState />
+        <AppNavigator />
       </Provider>
     );
   }

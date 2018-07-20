@@ -657,7 +657,7 @@ export default class GooglePlacesAutocomplete extends Component {
       ...userProps
     } = this.props.textInputProps;
 
-    const {goBack} = this.props.navigation;
+    const {navigation} = this.props;
 
     return (
       <View
@@ -674,7 +674,7 @@ export default class GooglePlacesAutocomplete extends Component {
               <Icon 
                 type="Ionicons" name='ios-arrow-back' 
                 style={{ color: '#34B089', marginTop: 8, marginHorizontal: 8 }}
-                onPress={() => goBack()} 
+                onPress={() => navigation.dispatch({ type: 'Back' })}
               />
             </TouchableOpacity>
 

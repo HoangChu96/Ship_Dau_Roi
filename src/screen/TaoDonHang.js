@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import {
     View, StyleSheet, Dimensions
 } from 'react-native';
-import {connect} from 'react-redux';
-import { Container, Header, Content, Button, Text } from 'native-base';
-import { NavigationActions } from 'react-navigation';
+import { Container, Content, Button, Text } from 'native-base';
 
-const { width } = Dimensions.get('window');
 
 class TaoDonHang extends Component {
     constructor(props) {
@@ -16,10 +13,11 @@ class TaoDonHang extends Component {
     }
 
     render() {
+        const {navigation} = this.props;
         return (
             <Container>
                 <Content>
-                    <Button onPress={() => this.props.navigation.navigate({routeName: 'GooglePlacesAutocomplete'})} >
+                    <Button onPress={() => navigation.dispatch({ type: 'Place' })} >
                         <Text>Add</Text>
                     </Button>
                 </Content>
@@ -28,7 +26,7 @@ class TaoDonHang extends Component {
     }
 }
 
-export default connect()(TaoDonHang);
+export default TaoDonHang;
 
 const styles = StyleSheet.create({
 
